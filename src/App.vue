@@ -3,16 +3,18 @@
     <b-container>
       <div class="app-header"></div>
       <app-header
-        :isInitialized="catData.isInitialized"
+        :isInitialized="isInitialized"
       ></app-header>
       <b-row>
         <b-col cols="7" class="column-one">
-          <div v-if="catData.isInitialized">
+          <div v-if="isInitialized">
             <!-- TODO: INSERT COMPONENT HERE PLZZ -->
             <h4>since the cat has been initialized, content should be here.</h4>
           </div>
           <div v-else>
-            <app-cat-start></app-cat-start>
+            <app-cat-start
+              :createCat="createCat"
+            ></app-cat-start>
             <!-- TODO: give property (type:function) that will initialize cat after form has been submitted.-->
           </div>
         </b-col>
@@ -41,16 +43,29 @@ export default {
         name: '',
         breed: '',
         age: 0,
-        characteristics: [],
+        description:'' ,
         status: {
           happiness:0,
           hunger: 0,
           entertained: 0,
         },
-        isInitialized: false,
       },
+      isInitialized: false,
       currentPage: '',
     };
+  },
+  methods: {
+    createCat(name, breed, age, description) {
+      console.log('reached here!');
+      this.catData.name = name;
+      this.catData.breed = breed;
+      this.catData.age = age;
+      this.catData.description = description;
+      this.catData.status['happiness'] = 100;
+      this.catData.status['hunger'] = 0;
+      this.catData.status['entertained'] = 100;
+      this.isInitialized = true;
+    }
   }
 }
 </script>
