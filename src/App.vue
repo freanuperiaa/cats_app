@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-container>
+      <div class="app-header"></div>
+      <app-header></app-header>
+      <b-row>
+        <b-col cols="7" class="column-one">1 of 2</b-col>
+        <b-col cols="5" class="column-two">
+          <app-cat></app-cat>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue';
+import CatColumn from './components/CatColumn.vue';
 
 export default {
-  name: 'app',
   components: {
-    HelloWorld
-  }
+      appHeader: Header,
+      appCat: CatColumn,
+  },
 }
 </script>
 
@@ -25,4 +34,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
