@@ -8,8 +8,19 @@
         <b-collapse id="nav-collapse" is-nav>
         <template v-if="isInitialized">
             <b-navbar-nav>
-                <b-nav-item href="#">Link</b-nav-item>
-                <b-nav-item href="#">Disabled</b-nav-item>
+                <b-nav-item
+                    @click="changepage('app-care')"
+                >
+                    Care
+                </b-nav-item>
+                <b-nav-item
+                >
+                    Play
+                </b-nav-item>
+                <b-nav-item
+                >
+                    My Cat
+                </b-nav-item>
             </b-navbar-nav>
         </template>
 
@@ -22,6 +33,8 @@
 export default {
     props: {
         isInitialized: Boolean,
+        currentPage: String,
+        changepage: Function,
     },
 
 }

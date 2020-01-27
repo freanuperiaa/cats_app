@@ -4,12 +4,15 @@
       <div class="app-header"></div>
       <app-header
         :isInitialized="isInitialized"
+        :currentPage="currentComponent"
+        :changePage="changePage"
       ></app-header>
       <b-row>
         <b-col cols="7" class="column-one">
           <div v-if="isInitialized">
-            <!-- TODO: INSERT COMPONENT HERE PLZZ -->
-            <h4>since the cat has been initialized, content should be here.</h4>
+            <component :is="currentComponent">
+              <p>Default Content</p>
+            </component>
           </div>
           <div v-else>
             <app-cat-start
@@ -30,12 +33,20 @@
 import Header from './components/Header.vue';
 import CatColumn from './components/CatColumn.vue';
 import CatStart from './components/CatStart.vue';
+import Home from './components/Home.vue';
+import Care from './components/Care.vue';
+import Play from './components/Play.vue';
+import MyCat from './components/MyCat.vue';
 
 export default {
   components: {
       appHeader: Header,
       appCat: CatColumn,
       appCatStart: CatStart,
+      appHome: Home,
+      appCare: Care,
+      appPlay: Play,
+      appMyCat: MyCat,
   },
   data: function() {
     return {
@@ -51,7 +62,7 @@ export default {
         },
       },
       isInitialized: false,
-      currentPage: '',
+      currentComponent: Home,
     };
   },
   methods: {
@@ -65,7 +76,10 @@ export default {
       this.catData.status['hunger'] = 0;
       this.catData.status['entertained'] = 100;
       this.isInitialized = true;
-    }
+    },
+    changePage(page) {
+      this.currentComponent = page;
+    },
   }
 }
 </script>
