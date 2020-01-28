@@ -9,15 +9,17 @@
         <template v-if="isInitialized">
             <b-navbar-nav>
                 <b-nav-item
-                    @click="changepage('app-care')"
+                    @click="changePage('appCare')"
                 >
                     Care
                 </b-nav-item>
                 <b-nav-item
+                    @click="changePage('appPlay')"
                 >
                     Play
                 </b-nav-item>
                 <b-nav-item
+                    @click="changePage('appMyCat')"
                 >
                     My Cat
                 </b-nav-item>
@@ -34,7 +36,7 @@ export default {
     props: {
         isInitialized: Boolean,
         currentPage: String,
-        changepage: Function,
+        changePage: Function,
     },
 
 }

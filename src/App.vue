@@ -67,7 +67,6 @@ export default {
   },
   methods: {
     createCat(name, breed, age, description) {
-      console.log('reached here!');
       this.catData.name = name;
       this.catData.breed = breed;
       this.catData.age = age;
@@ -78,6 +77,7 @@ export default {
       this.isInitialized = true;
     },
     changePage(page) {
+      console.log(page); // just to checc
       this.currentComponent = page;
     },
   }
